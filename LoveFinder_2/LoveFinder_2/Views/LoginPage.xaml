@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:LoveFinder_2.ViewModels"
+             x:DataType="viewmodels:LoginViewModel"
+             x:Class="LoveFinder_2.Views.LoginPage"
+             Style="{StaticResource appBackground}">
+    <ContentPage.BindingContext>
+        <viewmodels:LoginViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Style="{StaticResource pageMain}">
+        <Image Source="logo.jpg" />
+
+        <Entry Text="{Binding Email}" Placeholder="Email" Style="{StaticResource inputMain}"/>
+        <Entry Text="{Binding Password}" Placeholder="Password" Style="{StaticResource inputMain}"/>
+
+        <Button Command="{Binding Login}" Text="Login" Style="{StaticResource btnMain}"/>
+        <Button Command="{Binding Register}" Text="Register" Style="{StaticResource btnMain}"/>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:LoveFinder_2.ViewModels"
+             x:DataType="viewmodels:ProfileEditViewModel"
+             x:Class="LoveFinder_2.Views.ProfileEditPage"
+             Style="{StaticResource appBackground}">
+    <ContentPage.BindingContext>
+        <viewmodels:ProfileEditViewModel/>
+    </ContentPage.BindingContext>
+
+    <StackLayout Style="{StaticResource pageMain}">
+        <ImageButton Source="BlankProfile.jpg" Style="{StaticResource btnLike}"/>
+        <Label Text="{Binding FirstName}" Style="{StaticResource titleMain}"/>
+
+        <Label Style="{StaticResource titleSecondary}">Bio:</Label>
+        <Entry Text="{Binding Biography}" Placeholder="Bio" Style="{StaticResource inputMain}"/>
+
+        <Button Command="{Binding Save}" Text="Save" Style="{StaticResource btnMain}"/>
+        <Button Command="{Binding Logout}" Text="Logout" Style="{StaticResource btnMain}"/>
+        <Button Command="{Binding DeleteProfile}" Text="Delete profile" Style="{StaticResource btnAlert}"/>
+    </StackLayout>
+</ContentPage>

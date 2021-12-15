@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:LoveFinder_2.ViewModels"
+             x:DataType="viewmodels:HomeViewModel"
+             x:Class="LoveFinder_2.Views.HomePage"
+             Style="{StaticResource appBackground}">
+    <ContentPage.BindingContext>
+        <viewmodels:HomeViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Example Item"
+                 IconImageSource="BlankProfile.png"
+                 Order="Primary"
+                 Priority="0"/>
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout Style="{StaticResource pageMain}">
+            <Image Source="{Binding ProfileImage.ImageUrl}"/>
+            <Label Text="{Binding FirstName}" Style="{StaticResource titleMain}"/>
+
+            <Label Style="{StaticResource titleSecondary}">Bio:</Label>
+            <Label Text="{Binding Biography}" Style="{StaticResource textBoxMain}"/>
+
+            <Grid>
+                <ImageButton Source="close.png" Grid.Row="0" Grid.Column="0" Style="{StaticResource btnLike}"/>
+                <ImageButton Source="heart.png" Grid.Row="0" Grid.Column="1" Style="{StaticResource btnLike}"/>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
