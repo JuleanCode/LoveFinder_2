@@ -13,7 +13,8 @@
         <ToolbarItem Text="Example Item"
                  IconImageSource="BlankProfile.png"
                  Order="Primary"
-                 Priority="0"/>
+                 Priority="0"
+                 Command="{Binding Profile}"/>
     </ContentPage.ToolbarItems>
 
     <ScrollView>

@@ -34,16 +34,21 @@ namespace LoveFinder_2.Services
         {
             Init();
 
-            for (int i = 0; i < 5; i++)
+            ProfileImage profileImage = new ProfileImage()
             {
-                ProfileImage profileImage = new ProfileImage()
-                {
-                    ImageUrl = "BlankProfile.jpg",
-                    User_ID = Int32.Parse(Application.Current.Properties["CurentUser_id"].ToString())
-                };
+                ImageUrl = "BlankProfile.jpg",
+                User_ID = Int32.Parse(Application.Current.Properties["CurentUser_id"].ToString())
+            };
 
-                db.Insert(profileImage);
-            }
+            db.Insert(profileImage);
+        }
+        public static void UpdateUserProfileImages(string NewImagePath)
+        {
+            Init();
+
+            List<ProfileImage> profileImage = GetUserProfileImages(Int32.Parse(Application.Current.Properties["CurentUser_id"].ToString()));
+
+            db.Update(profileImage[0]);
         }
         public static List<ProfileImage> GetUserProfileImages(int ID)
         {

@@ -50,6 +50,7 @@ namespace LoveFinder_2.ViewModels
 
         void OnLogin()
         {
+            //
             //UserService.DeleteAllUsers();
             //UserService.GetAllUser();
             if(email != "" && password != "")

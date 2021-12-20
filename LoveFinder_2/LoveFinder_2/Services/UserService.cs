@@ -61,6 +61,9 @@ namespace LoveFinder_2.Services
 
         public static void UpdateUser(User user)
         {
+            Init();
+
+            db.Update(user);
         }
 
         public static void DeleteUser(int ID)

@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Essentials;
+using System.IO;
+using LoveFinder_2.Services;
 
 namespace LoveFinder_2.ViewModels
 {
@@ -22,11 +25,13 @@ namespace LoveFinder_2.ViewModels
             Save = new Command(OnSave);
             Logout = new Command(OnLogout);
             DeleteProfile = new Command(OnDeleteProfile);
+            ChangeProfileImage = new Command(OnChangeProfileImage);
         }
 
         public ICommand Save { get; }
         public ICommand Logout { get; }
         public ICommand DeleteProfile { get; }
+        public ICommand ChangeProfileImage { get; }
 
         public string FirstName
         {
@@ -56,17 +61,38 @@ namespace LoveFinder_2.ViewModels
         void OnSave()
         {
             //Update the user in the DB
-            Application.Current.MainPage.DisplayAlert("Alert", "Save!", "Ok");
+
+            UserService.UpdateUser(user);
+            Application.Current.MainPage.Navigation.PushAsync(new HomePage());
         }
         void OnLogout()
         {
             //End session and go to login screen
+            Application.Current.Properties["CurentUser_id"] = null;
+
             Application.Current.MainPage.DisplayAlert("Alert", "Logout", "Ok");
+            Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
         }
         void OnDeleteProfile()
         {
             //Delete profile and go to login screen
-            Application.Current.MainPage.DisplayAlert("Alert", "Delete profile", "Ok");
+
+            UserService.DeleteUser(Int32.Parse(Application.Current.Properties["CurentUser_id"].ToString()));
+
+            Application.Current.MainPage.DisplayAlert("Alert", "Deleted profile", "Ok");
+            Application.Current.MainPage.Navigation.PushAsync(new LoginPage());
+        }
+
+        async void OnChangeProfileImage()
+        {
+            var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+            {
+                Title = "Please pick your new profile photo"
+            });
+
+            ProfileImageService.UpdateUserProfileImages(result.FullPath);
+
+            await Application.Current.MainPage.DisplayAlert("Alert", "Profile image updated", "Ok");
         }
     }
 }

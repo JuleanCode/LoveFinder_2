@@ -10,7 +10,7 @@
     </ContentPage.BindingContext>
 
     <StackLayout Style="{StaticResource pageMain}">
-        <ImageButton Source="BlankProfile.jpg" Style="{StaticResource btnLike}"/>
+        <ImageButton Command="{Binding ChangeProfileImage}" Source="/storage/emulated/0/Android/data/com.companyname.lovefinder_2/cache/2203693cc04e0be7f4f024d5f9499e13/8861e8e7da3c4187b94ec6688c24ad97/IMG_20211217_192418.jpg" Style="{StaticResource btnLike}"/>
         <Label Text="{Binding FirstName}" Style="{StaticResource titleMain}"/>
 
         <Label Style="{StaticResource titleSecondary}">Bio:</Label>

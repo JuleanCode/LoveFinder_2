@@ -20,11 +20,13 @@ namespace LoveFinder_2.ViewModels
 
         public HomeViewModel()
         {
+            Profile = new Command(OnProfile);
             Like = new Command(OnLike);
             Dislike = new Command(OnDisLike);
             SetDisplayUser();
         }
 
+        public ICommand Profile { get; }
         public ICommand Like { get; }
         public ICommand Dislike { get; }
 
@@ -88,12 +90,20 @@ namespace LoveFinder_2.ViewModels
                 Application.Current.MainPage.DisplayAlert("Alert", "No matches left", "OK");
             }
         }
+        void OnProfile()
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new ProfileEditPage());
+        }
         void OnLike()
         {
+            SwipeService.Swipe(Int32.Parse(Application.Current.Properties["CurentUser_id"].ToString()), DisplayUser.ID, true);
+
             Application.Current.MainPage.DisplayAlert("Alert", "Liked", "OK");
         }
         void OnDisLike()
         {
+            SwipeService.Swipe(Int32.Parse(Application.Current.Properties["CurentUser_id"].ToString()), DisplayUser.ID, false);
+
             Application.Current.MainPage.DisplayAlert("Alert", "Disliked", "OK");
         }
     }
