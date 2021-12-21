@@ -77,7 +77,7 @@ namespace LoveFinder_2.Services
         {
             Init();
 
-            List<User> users  = db.Table<User>().ToList();
+            List<User> users  = db.Query<User>($"SELECT * FROM user WHERE ID != {Application.Current.Properties["CurentUser_id"]}");
             return users;
         }
 
