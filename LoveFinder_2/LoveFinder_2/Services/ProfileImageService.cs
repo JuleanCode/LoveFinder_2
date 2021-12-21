@@ -47,6 +47,7 @@ namespace LoveFinder_2.Services
             Init();
 
             List<ProfileImage> profileImage = GetUserProfileImages(Int32.Parse(Application.Current.Properties["CurentUser_id"].ToString()));
+            profileImage[0].ImageUrl = NewImagePath;
 
             db.Update(profileImage[0]);
         }

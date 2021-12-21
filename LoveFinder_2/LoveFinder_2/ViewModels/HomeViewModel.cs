@@ -15,8 +15,8 @@ namespace LoveFinder_2.ViewModels
         //Get all users from the DB
         public List<User> Users = UserService.GetAllUser();
         public User DisplayUser = new User();
-        public ProfileImage profileImage = new ProfileImage();
-        public int DisplayUserPosition;
+        public string profileImage;
+        public int DisplayUserPosition = 0;
 
         public HomeViewModel()
         {
@@ -30,7 +30,7 @@ namespace LoveFinder_2.ViewModels
         public ICommand Like { get; }
         public ICommand Dislike { get; }
 
-        public ProfileImage ProfileImage
+        public string ProfileImage
         {
             get => profileImage;
             set
@@ -75,14 +75,16 @@ namespace LoveFinder_2.ViewModels
             {
                 try
                 {
+                    FirstName = Users[DisplayUserPosition].FirstName;
+                    Biography = Users[DisplayUserPosition].Biography;
                     DisplayUser = Users[DisplayUserPosition];
-                    List<ProfileImage> profileImages = ProfileImageService.GetUserProfileImages(DisplayUser.ID);
-                    ProfileImage = profileImages[0];
+                    List<ProfileImage> profileImages = ProfileImageService.GetUserProfileImages(Users[DisplayUserPosition].ID);
+                    ProfileImage = profileImages[0].ImageUrl;
                     DisplayUserPosition++;
                 }
                 catch
                 {
-                    Application.Current.MainPage.DisplayAlert("Alert", "Something went wrong", "OK");
+                    Application.Current.MainPage.DisplayAlert("Alert", "No matches left", "OK");
                 }
             }
             else
@@ -98,12 +100,14 @@ namespace LoveFinder_2.ViewModels
         {
             SwipeService.Swipe(Int32.Parse(Application.Current.Properties["CurentUser_id"].ToString()), DisplayUser.ID, true);
 
+            SetDisplayUser();
             Application.Current.MainPage.DisplayAlert("Alert", "Liked", "OK");
         }
         void OnDisLike()
         {
             SwipeService.Swipe(Int32.Parse(Application.Current.Properties["CurentUser_id"].ToString()), DisplayUser.ID, false);
 
+            SetDisplayUser();
             Application.Current.MainPage.DisplayAlert("Alert", "Disliked", "OK");
         }
     }

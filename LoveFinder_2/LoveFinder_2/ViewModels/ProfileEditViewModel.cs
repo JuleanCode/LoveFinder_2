@@ -14,11 +14,7 @@ namespace LoveFinder_2.ViewModels
     public class ProfileEditViewModel : BindableObject
     {
         //Get user from the DB and fill this object
-        public User user = new User()
-        {
-            FirstName = "Julean",
-            Biography = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel leo nec turpis consectetur commodo ac at risus."
-        };
+        public User user = UserService.GetUser(Int32.Parse(Application.Current.Properties["CurentUser_id"].ToString()));
 
         public ProfileEditViewModel()
         {

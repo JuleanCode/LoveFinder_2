@@ -19,15 +19,15 @@
 
     <ScrollView>
         <StackLayout Style="{StaticResource pageMain}">
-            <Image Source="{Binding ProfileImage.ImageUrl}"/>
+            <Image Source="{Binding ProfileImage}"/>
             <Label Text="{Binding FirstName}" Style="{StaticResource titleMain}"/>
 
             <Label Style="{StaticResource titleSecondary}">Bio:</Label>
             <Label Text="{Binding Biography}" Style="{StaticResource textBoxMain}"/>
 
             <Grid>
-                <ImageButton Source="close.png" Grid.Row="0" Grid.Column="0" Style="{StaticResource btnLike}"/>
-                <ImageButton Source="heart.png" Grid.Row="0" Grid.Column="1" Style="{StaticResource btnLike}"/>
+                <ImageButton Command="{Binding Dislike}" Source="close.png" Grid.Row="0" Grid.Column="0" Style="{StaticResource btnLike}"/>
+                <ImageButton Command="{Binding Like}" Source="heart.png" Grid.Row="0" Grid.Column="1" Style="{StaticResource btnLike}"/>
             </Grid>
         </StackLayout>
     </ScrollView>
