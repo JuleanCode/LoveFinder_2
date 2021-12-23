@@ -17,5 +17,8 @@
 
         <Button Command="{Binding Login}" Text="Login" Style="{StaticResource btnMain}"/>
         <Button Command="{Binding Register}" Text="Register" Style="{StaticResource btnMain}"/>
+
+        <Label Text="{Binding Quote}" Style="{StaticResource titleSecondary}"/>
+        <Label Text="'Chuck Norris'" Style="{StaticResource titleSecondary}"/>
     </StackLayout>
 </ContentPage>
