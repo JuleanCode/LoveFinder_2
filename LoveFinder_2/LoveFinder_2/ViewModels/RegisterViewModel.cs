@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace LoveFinder_2.ViewModels
@@ -165,7 +166,8 @@ namespace LoveFinder_2.ViewModels
             {
                 if(user.Age >= 18)
                 {
-                    user.Location = "Curent location";
+                    // get the users location
+                    user.Location = Geolocation.GetLastKnownLocationAsync().ToString(); ;
 
                     UserService.CreateUser(user);
 

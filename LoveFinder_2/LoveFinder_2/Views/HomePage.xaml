@@ -10,11 +10,16 @@
     </ContentPage.BindingContext>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Example Item"
+        <ToolbarItem Text="My Profile"
                  IconImageSource="BlankProfile.png"
                  Order="Primary"
                  Priority="0"
                  Command="{Binding Profile}"/>
+        <ToolbarItem Text="My Chats"
+                 IconImageSource="BlankProfile.png"
+                 Order="Secondary"
+                 Priority="0"
+                 Command="{Binding Chats}"/>
     </ContentPage.ToolbarItems>
 
     <ScrollView>

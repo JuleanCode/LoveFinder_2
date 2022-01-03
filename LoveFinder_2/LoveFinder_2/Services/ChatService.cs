@@ -42,5 +42,12 @@ namespace LoveFinder_2.Services
 
             db.Insert(chat);
         }
+        public static List<Chat> GetChats()
+        {
+            Init();
+
+            List<Chat> chats = db.Query<Chat>($"SELECT * FROM chat WHERE FirstUser_ID == {Application.Current.Properties["CurentUser_id"]}");
+            return chats;
+        }
     }
 }

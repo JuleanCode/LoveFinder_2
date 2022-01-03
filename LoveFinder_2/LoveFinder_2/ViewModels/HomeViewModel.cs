@@ -21,12 +21,14 @@ namespace LoveFinder_2.ViewModels
         public HomeViewModel()
         {
             Profile = new Command(OnProfile);
+            Chats = new Command(OnChats);
             Like = new Command(OnLike);
             Dislike = new Command(OnDisLike);
             SetDisplayUser();
         }
 
         public ICommand Profile { get; }
+        public ICommand Chats { get; }
         public ICommand Like { get; }
         public ICommand Dislike { get; }
 
@@ -95,6 +97,10 @@ namespace LoveFinder_2.ViewModels
         void OnProfile()
         {
             Application.Current.MainPage.Navigation.PushAsync(new ProfileEditPage());
+        }
+        void OnChats()
+        {
+            Application.Current.MainPage.Navigation.PushAsync(new ChatsPage());
         }
         void OnLike()
         {

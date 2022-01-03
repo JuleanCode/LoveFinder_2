@@ -82,7 +82,6 @@ namespace LoveFinder_2.ViewModels
                 {
                     Application.Current.MainPage.DisplayAlert("Alert", "Login credentials are incorrect ", "Ok");
                 }
-
             }
             else
             {

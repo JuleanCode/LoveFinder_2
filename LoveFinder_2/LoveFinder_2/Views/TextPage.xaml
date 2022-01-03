@@ -2,15 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewmodels="clr-namespace:LoveFinder_2.ViewModels"
-             x:DataType="viewmodels:ChatsViewModel"
-             x:Class="LoveFinder_2.Views.ChatsPage"
+             x:DataType="viewmodels:TextViewModel"
+             x:Class="LoveFinder_2.Views.TextPage"
              Style="{StaticResource appBackground}">
     <ContentPage.BindingContext>
-        <viewmodels:ChatsViewModel/>
+        <viewmodels:TextViewModel/>
     </ContentPage.BindingContext>
 
     <StackLayout Style="{StaticResource pageMain}">
-        <ListView x:Name="Chats" ItemsSource="{Binding Chats}">
+        <ListView x:Name="Chats" ItemsSource="{Binding Texts}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
